@@ -3,6 +3,17 @@
     border-style: solid;
     border-width: 2px;
     background-color: aquamarine;
-    font-size: 15px;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 4px;
+}
 
+
+.boldest{
+    font-weight: bold;
+}
+
+.large-Font{
+    font-size: large;
 }

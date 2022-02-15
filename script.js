@@ -30,7 +30,7 @@
        
     //}
 
-    fetch("./assets/books.json")
+    fetch("./assets/data.json")
     .then( (response)=>response.json())
     .then((data)=> console.log(data))
     .catch((error)=> console.log(error));
@@ -65,16 +65,24 @@ function appendBookToHTMLList(data) {
     for (const i of data) {
         let info = document.createElement("li");
         // info.innerHTML=i.title;
-        let textNode2= document.createTextNode(i.autore);
-        info.appendChild(textNode2)
-        let textNode=document.createTextNode(i.title);
-        info.appendChild(textNode);
+        addTextToHTMLElement(info, i.title, true, 'boldest large-font');
+        addTextToHTMLElement(info, i.autore, true, 'large-font');
         
         list.appendChild(info);
     }
        listContainer.appendChild(list)
 }
-
+function addTextToHTMLElement(htmlElement, text, isNewLine= false, classesName) {
+    const span = document.createElement('span');
+    span.className += classesName + " "
+    let textNode2= document.createTextNode(text);
+    span.appendChild(textNode2)
+        htmlElement.appendChild(span)
+        if (isNewLine) {
+            const newLine = document.createElement('br');
+            htmlElement.appendChild(newLine);
+        }
+}
 fetch("./assets/books.json")
     .then( (response)=>response.json())
     .then(appendBookToHTMLList)
